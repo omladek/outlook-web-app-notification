@@ -1,7 +1,9 @@
-# outlook-web-app-notification
-Show notification window when new email arrives.
+# Outlook Web App Notifications for Google Chrome
+Show notification when new email arrives.
 
-Icon by: [https://www.iconfinder.com/icons/520567/alarm_alert_bell_notification_ring_icon#size=48](https://www.iconfinder.com/icons/520567/alarm_alert_bell_notification_ring_icon#size=48)
+# Compatibility
+* Microsoft Exchange Server 2013 web interface
+* Google Chrome 54.0.2840.71 m + 
 
 # Setup
 1. Download and extract this repository
@@ -13,3 +15,8 @@ Icon by: [https://www.iconfinder.com/icons/520567/alarm_alert_bell_notification_
 6. Go to the URL of your webmail and log in
 7. Whenever new mail arrives a notification will appear in the bottom right corner of your screen. When you click on it, the window will be focused.
 
+# License
+Do whatever you want.
+
+# Extension icon
+Icon by: [https://www.iconfinder.com/icons/520567/alarm_alert_bell_notification_ring_icon#size=48](https://www.iconfinder.com/icons/520567/alarm_alert_bell_notification_ring_icon#size=48)
