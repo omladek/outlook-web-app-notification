@@ -22,8 +22,9 @@ let LAST_NOTIFICATION_TEXT = '';
 let UNREAD_EMAILS_TOTAL = 0;
 let LAST_NOTIFICATION_ID = 0;
 
-
-// init the app
+/**
+ * Init the app.
+ */
 isOutlookWebAppLoaded();
 
 /**
@@ -62,7 +63,7 @@ function init() {
     if (appConfig.debug) {
         console.log('LAST_NOTIFICATION_TEXT: ' + LAST_NOTIFICATION_TEXT);
         console.log('UNREAD_EMAILS_TOTAL: ' + UNREAD_EMAILS_TOTAL);
-        console.log('LAST_NOTIFICATION_ID: ' + LAST_NOTIFICATION_ID);    
+        console.log('LAST_NOTIFICATION_ID: ' + LAST_NOTIFICATION_ID);
     }
 
     // configuration of the observer:
@@ -89,7 +90,7 @@ function init() {
 
 /**
  * Show notification.
- * 
+ *
  */
 function notifyMe() {
     if (appConfig.debug) {
@@ -112,12 +113,12 @@ function notifyMe() {
 
 /**
  * Iterate through all folders and get the total of unread emails.
- * 
+ *
  * @return {integer}
  */
 function getUnreadEmailsTotal() {
     let total = 0;
-    
+
     getFoldersTree().querySelectorAll('span[id*="count"]').forEach((item) => {
         // ignore these folders
         if (isIgnoredFolder(item)) {
@@ -137,7 +138,7 @@ function getUnreadEmailsTotal() {
 
 /**
  * Returns true if the current html element is child of the ignored folder.
- * 
+ *
  * @param  {HTML el} el
  * @return {bool}
  */
@@ -155,23 +156,23 @@ function isIgnoredFolder(el) {
 
 /**
  * Create text which should be displayed in the notification.
- * 
+ *
  * @return {string}
  */
 function getLatestEmailText() {
     const el = document.querySelector('.o365cs-notifications-notificationPopupArea .o365cs-notifications-newMailLink .o365cs-notifications-text + div');
     let text = '';
-    
+
     if (el) {
         text = el.textContent;
     }
-    
+
     return text;
 }
 
 /**
  * Generate notification ID.
- * 
+ *
  * @param  {integer} currentUnread
  * @return {string}
  */
@@ -187,7 +188,7 @@ function getNotificationId(currentUnread) {
 
 /**
  * Returns the folders panel.
- * 
+ *
  * @return {html el}
  */
 function getFoldersTree() {
@@ -212,7 +213,7 @@ function handleMutationChange() {
         console.log('UNREAD_EMAILS_TOTAL:' + UNREAD_EMAILS_TOTAL);
         console.log('currentUnreadEmailsTotal:' + currentUnreadEmailsTotal);
         console.log('newNotificationId:' + newNotificationId);
-        console.log('LAST_NOTIFICATION_ID:' + LAST_NOTIFICATION_ID);        
+        console.log('LAST_NOTIFICATION_ID:' + LAST_NOTIFICATION_ID);
     }
 
     // in case I am reading the unread email
