@@ -6,7 +6,7 @@ Show notification when new email arrives.
 * Google Chrome 54.0.2840.71 m + 
 
 # Setup
-1. Download and extract this repository
+1. [Download](https://github.com/omladek/outlook-web-app-notification/archive/master.zip) and extract this repository
 2. Got to the extension folder and in the root directory in file "manifest.json" replace "xxx.example.tld" with your mail server info.
 2. In Chrome (desktop) go to: Settings > Extensions
 3. Check the option "Developer mode"
