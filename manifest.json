@@ -1,0 +1,43 @@
+{
+    "name": "Outlook Web App Notification",
+    "manifest_version": 2,
+    "version": "1.0",
+    "description": "Show notification when new email arrives.",
+    "options_ui": {
+        "page": "src/options.html",
+        "chrome_style": true
+    },
+    "content_scripts": [
+        {
+            "run_at": "document_end",
+            "js": [
+                "src/js/background.js"
+            ], 
+            "matches": [
+                "http://xxx.example.tld/*", 
+                "https://xxx.example.tld/*"
+            ]
+        }
+    ], 
+    "icons": {
+        "16": "src/gfx/icon_16x16.png",
+        "48": "src/gfx/icon_48x48.png",
+        "128": "src/gfx/icon_128x128.png",
+        "512": "src/gfx/icon_512x512.png"
+    },
+    "permissions": [
+        "activeTab",
+        "tabs",
+        "webRequest",
+        "webRequestBlocking",
+        "storage",
+        "notifications",
+        "http://xxx.example.tld/*",
+        "https://xxx.example.tld/*"
+    ],
+    "applications": {
+        "gecko": {
+            "id": "ondrej.mladek@actum.cz"
+        }
+    }
+}
