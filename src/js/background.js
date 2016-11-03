@@ -145,12 +145,10 @@ function initObserver(observerTarget, observerConfig) {
     const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
             // catch only the mutation of the label containing the number of unread emails
-            const id = mutation.target.id;
+            const id = parseInt(mutation.target.textContent);
 
-            if (id) {
-                if (id.lastIndexOf('ucount') !== -1) {
-                    handleMutationChange();
-                }
+            if (!isNaN(id)) {
+                handleMutationChange();
             }
         });
     });
