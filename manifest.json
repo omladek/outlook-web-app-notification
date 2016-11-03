@@ -12,13 +12,13 @@
             "run_at": "document_end",
             "js": [
                 "src/js/background.js"
-            ], 
+            ],
             "matches": [
-                "http://xxx.example.tld/*", 
+                "http://xxx.example.tld/*",
                 "https://xxx.example.tld/*"
             ]
         }
-    ], 
+    ],
     "icons": {
         "16": "src/gfx/icon_16x16.png",
         "48": "src/gfx/icon_48x48.png",
@@ -26,10 +26,6 @@
         "512": "src/gfx/icon_512x512.png"
     },
     "permissions": [
-        "activeTab",
-        "tabs",
-        "webRequest",
-        "webRequestBlocking",
         "storage",
         "notifications",
         "http://xxx.example.tld/*",
