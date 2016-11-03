@@ -3,8 +3,71 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Options</title>
+    <style>
+        :root {
+            --gutter: 20px;
+            --gutter-half: calc(var(--gutter) / 2);
+        }
+
+        h2 {
+            margin-bottom: var(--gutter-half);
+        }
+
+        .form-group + .form-group {
+            margin-top: var(--gutter-half);
+        }
+
+        .form-group {
+            display: inline-block;
+            padding: var(--gutter-half);
+            transition: all .5s ease-out;
+        }
+
+        .form-group:nth-child(odd) {
+            background: #efefef;
+        }
+
+        .form-group:nth-child(even) {
+            background: #dedede;
+        }
+
+        .removed {
+            opacity: 0;
+        }
+
+        input[readonly] {
+            border: 0;
+        }
+
+        .status {
+            background: #3caf3c;
+            color: #fff;
+            left: 50%;
+            padding: var(--gutter-half);
+            position: absolute;
+            top: var(--gutter);
+            transform: translateX(-50%);
+            transition: all .25s ease-out;
+        }
+
+        .hidden {
+            opacity: 0;
+            top: -100px;
+        }
+    </style>
 </head>
 <body>
-	TODO: options
+	<h1>Set ingnored folders</h1>
+    <p>When new email arrives in this/these folder(s), do not show the notificiation:</p>
+
+    <h2>Add folder to the list:</h2>
+    <div id="add-new"></div>
+
+    <div id="status" class="hidden status"></div>
+
+    <h2>List of ignored folders:</h2>
+    <div id="ignored-folders"></div>
+
+    <script src="js/options.js"></script>
 </body>
 </html>
