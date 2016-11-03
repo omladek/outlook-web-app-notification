@@ -17,6 +17,7 @@ Show notification when new email arrives.
 
 # List of ignored folders
 If you do not want to show the notification for each new email, you can exclude  the folder(s) in the extension settings.
+
 1. In the browser toolbar click on the extension's icon and select "Settings"
 2. Or go directly to "chrome://extensions/" - find the extension and click on "Settings"
 3. In the settings popup you can add/remove folders which should be ignored.
