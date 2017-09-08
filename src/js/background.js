@@ -138,9 +138,7 @@ const App = () => {
                 // catch only the mutation of the label containing the number of unread emails
                 const id = parseInt(mutation.target.textContent);
 
-                if (!isNaN(id)) {
-                    handleMutationChange();
-                }
+                !isNaN(id) && handleMutationChange();
             });
         });
 
@@ -300,9 +298,7 @@ const App = () => {
      * @param  {whatever} message
      */
     function debug(message) {
-        if (appConfig.debug) {
-            console.log(message);
-        }
+        appConfig.debug && console.log(message);
     }
 
     return null;
