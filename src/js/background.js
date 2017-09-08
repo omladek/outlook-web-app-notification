@@ -33,14 +33,14 @@ const App = () => {
      */
     function isOutlookWebAppLoaded() {
         if (getFoldersTree()) {
-            debug('isOutlookWebAppLoaded: yup');
+            debug('isOutlookWebAppLoaded: yes');
 
             isConfigReady();
         } else {
-            debug('isOutlookWebAppLoaded: nope');
+            debug('isOutlookWebAppLoaded: no');
 
             setTimeout(() => {
-                debug('run again');
+                debug('isOutlookWebAppLoaded: run again');
 
                 isOutlookWebAppLoaded();
             }, 1500);
@@ -54,15 +54,15 @@ const App = () => {
         getIgnoredFolders();
 
         if (appConfig.ignoredFolders === undefined) {
-            debug('isConfigReady no');
+            debug('isConfigReady: no');
 
             setTimeout(() => {
-                debug('isConfigReady run again');
+                debug('isConfigReady: run again');
 
                 isConfigReady();
             }, 1500);
         } else {
-            debug('isConfigReady yes');
+            debug('isConfigReady: yes');
 
             setupApp();
         }
@@ -88,13 +88,12 @@ const App = () => {
         let arr = [];
         const folders = string.split(',');
 
-        debug('ignored:');
-        debug(folders);
+        debug(`ignored folders: ${folders}`);
 
-        folders.forEach((item) => {
-            debug('ignore:' + item);
+        folders.forEach((folder) => {
+            debug(`ignored folder: ${folder}`);
 
-            arr.push(item);
+            arr.push(folder);
         });
 
         appConfig.ignoredFolders = arr;
@@ -108,9 +107,9 @@ const App = () => {
         appState.UNREAD_EMAILS_TOTAL = getUnreadEmailsTotal();
         appState.LAST_NOTIFICATION_ID = getNotificationId();
 
-        debug('appState.LAST_NOTIFICATION_TEXT: ' + appState.LAST_NOTIFICATION_TEXT);
-        debug('appState.UNREAD_EMAILS_TOTAL: ' + appState.UNREAD_EMAILS_TOTAL);
-        debug('appState.LAST_NOTIFICATION_ID: ' + appState.LAST_NOTIFICATION_ID);
+        debug(`appState.LAST_NOTIFICATION_TEXT: ${appState.LAST_NOTIFICATION_TEXT}`);
+        debug(`appState.UNREAD_EMAILS_TOTAL: ${appState.UNREAD_EMAILS_TOTAL}`);
+        debug(`appState.LAST_NOTIFICATION_ID: ${appState.LAST_NOTIFICATION_ID}`);
 
         // configuration of the observer:
         const observerConfig = {
@@ -151,19 +150,21 @@ const App = () => {
      *
      */
     function notifyMe() {
-        debug('notify');
+        debug('notifyMe');
 
         if (Notification.permission !== 'granted') {
+            debug('notifyMe: request permission');
+
             Notification.requestPermission();
         } else {
+            debug('notifyMe: permission granted');
+
             const notification = new Notification('New mail:', {
                 icon: appConfig.notificationIcon,
                 body: appState.LAST_NOTIFICATION_TEXT,
             });
 
-            notification.onclick = function() {
-                window.focus();
-            };
+            notification.onclick = function() { window.focus(); };
         }
     }
 
@@ -202,7 +203,7 @@ const App = () => {
         let isIgnored = false;
 
         appConfig.ignoredFolders.forEach((item) => {
-            if (el.parentNode.querySelector(`[title="${ item }"]`)) {
+            if (el.parentNode.querySelector(`[title="${item}"]`)) {
                 isIgnored = true;
             }
         });
@@ -248,7 +249,11 @@ const App = () => {
      * @return {html el}
      */
     function getFoldersTree() {
-        return document.querySelector('[role=tree] .subfolders');
+        const tree = document.querySelector('[role=tree] .subfolders');
+
+        debug(`getFoldersTree: ${tree}`);
+
+        return tree;
     }
 
     /**
@@ -265,10 +270,10 @@ const App = () => {
         };
 
         debug('mutation change');
-        debug('appState.UNREAD_EMAILS_TOTAL:' + appState.UNREAD_EMAILS_TOTAL);
-        debug('currentUnreadEmailsTotal:' + currentUnreadEmailsTotal);
-        debug('newNotificationId:' + newNotificationId);
-        debug('appState.LAST_NOTIFICATION_ID:' + appState.LAST_NOTIFICATION_ID);
+        debug(`appState.UNREAD_EMAILS_TOTAL: ${appState.UNREAD_EMAILS_TOTAL}`);
+        debug(`currentUnreadEmailsTotal: ${currentUnreadEmailsTotal}`);
+        debug(`newNotificationId: ${newNotificationId}`);
+        debug(`appState.LAST_NOTIFICATION_ID: ${appState.LAST_NOTIFICATION_ID}`);
 
         // in case I am reading the unread email
         if (currentUnreadEmailsTotal < appState.UNREAD_EMAILS_TOTAL) {
@@ -295,7 +300,7 @@ const App = () => {
     }
 
     /**
-     * @param  {whatever} message
+     * @param  {string} message
      */
     function debug(message) {
         appConfig.debug && console.log(message);
