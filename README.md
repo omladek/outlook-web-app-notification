@@ -2,7 +2,7 @@
 Show notification when new email arrives.
 
 # Compatibility
-* Microsoft Exchange Server 2013 web interface
+* Microsoft Exchange Server 2013 web interface (Microsoft OWA)
 * Google Chrome 54.0.2840.71 m +
 
 # Setup
