@@ -33,11 +33,11 @@ const App = () => {
      */
     function isOutlookWebAppLoaded() {
         if (getFoldersTree()) {
-            debug('yup');
+            debug('isOutlookWebAppLoaded: yup');
 
             isConfigReady();
         } else {
-            debug('nope');
+            debug('isOutlookWebAppLoaded: nope');
 
             setTimeout(() => {
                 debug('run again');
@@ -250,7 +250,7 @@ const App = () => {
      * @return {html el}
      */
     function getFoldersTree() {
-        return document.querySelector('.treeHeaderContainer + div[role=tree]');
+        return document.querySelector('[role=tree] .subfolders');
     }
 
     /**
