@@ -2,7 +2,7 @@
 Show notification when new email arrives.
 
 # Compatibility
-* Microsoft Exchange Server 2013 web interface (Microsoft OWA), Version: 15.1.845.36 (I just guess the version, I could not find in the source code, but I take it from the assests URL, which contains: https://XXX/owa/prem/15.1.845.36/resources/styles/0/boot.mouse.css
+* Microsoft Exchange Server 2013 web interface (Microsoft OWA), Version: 15.1.845.36 (I just guess the version, I could not find it in the source code, so I took it from the assests URL, which is as this: https://XXX/owa/prem/15.1.845.36/resources/styles/0/boot.mouse.css
 * Google Chrome 54.0.2840.71 m +
 
 # Setup
